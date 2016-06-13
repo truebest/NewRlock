@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">NewRlock</string>
+    <string name="text_auth">Authenticating...</string>
+    <string name="action_settings">Settings</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="ip_address_caption">IP</string>
+    <string name="ip_address_value">10.0.2.2</string>
+    <string name="ip_port_caption">Port</string>
+    <string name="ip_port_value">40004</string>
+    <string name="login_caption">Login</string>
+    <string name="login_value">login</string>
+    <string name="password_caption">Password</string>
+    <string name="password_value">a1b2</string>
+    <string name="btn_protection">Поставить под охрану</string>
+    <string name="btn_signal">Подать сигнал</string>
+    <string name="btn_pin">Блокировка по PIN-коду</string>
+    <string name="btn_open_trunk">Открыть багажник</string>
+    <string name="txt_title_information">ИНФОРМАЦИЯ</string>
+    <string name="txt_title_attention">ПРЕДУПРЕЖДЕНИЯ</string>
+    <string name="txt_speed">Скорость</string>
+    <string name="txt_mileage">Пробег</string>
+    <string name="txt_voltage">Напряжение АКБ</string>
+    <string name="txt_tachometer">Тахометр</string>
+    <string name="txt_engine">t двигателя</string>
+    <string name="txt_t_saloon">t салона</string>
+    <string name="txt_t_street">t на улице</string>
+    <string name="btn_checkpoints">Контрольные точки</string>
+    <string name="txt_refueling">АЗС</string>
+    <string name="btn_stop">Остановки</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

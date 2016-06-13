@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/ic_general_btn_left_top"
+                android:drawableLeft="@drawable/ic_defence"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/btn_protection"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ic_general_btn_left_center"
+                android:drawableLeft="@drawable/ic_keys2"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/btn_pin"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ic_general_btn_left_bottom"
+                android:drawableLeft="@drawable/ic_info_detals"
+                android:drawablePadding="5dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Подробная информация"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="1dp"
+                android:background="@drawable/ic_general_btn_right_top"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/ic_signal"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/btn_signal"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ic_general_btn_right_center"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/ic_trunc"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/btn_open_trunk"
+                android:textSize="12sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ic_general_btn_right_bottom"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/ic_anti_grabber"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="Режим тревоги"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/tb_power"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/sel_power"
+        android:text="New ToggleButton"
+        android:textOff=""
+        android:textOn=""
+        android:visibility="visible" />
+</RelativeLayout>
