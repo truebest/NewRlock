@@ -12,6 +12,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,9 +20,11 @@ import ru.start_car.newrlock.R;
 import ru.start_car.newrlock.common.aids.EventHandler;
 import ru.start_car.newrlock.ui.fragments.CarLocationFragment;
 import ru.start_car.newrlock.ui.fragments.GeneralFragment;
+import ru.start_car.newrlock.ui.fragments.InfoFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
     private static final int REQUEST_SIGNUP = 0;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -38,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void run() {
                     try {
-                        Toast.makeText(getApplicationContext(),"Tost",Toast.LENGTH_SHORT);
-                    } catch(Exception e) { }
+                        Toast.makeText(getApplicationContext(), "Tost", Toast.LENGTH_SHORT);
+                    } catch (Exception e) {
+                    }
                 }
             });
         }
@@ -48,8 +52,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Activity onCreate");
         setContentView(R.layout.activity_main);
 
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -66,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onPageSelected(int position) {
 
+
             }
 
             @Override
@@ -73,15 +82,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
-
-        if (AuthState == 0) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent, REQUEST_SIGNUP);
-        }
+        if (AuthState == 0) restartAuth();
         else {
             ConnectionSingletone.getInstance().setDisconnectedEventHandler(new DisconnectedEvent());
         }
+
+    }
+
+
+    private void restartAuth() {
+        AuthState = 0;
+        ConnectionSingletone.getInstance().stop();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivityForResult(intent, REQUEST_SIGNUP);
     }
 
     @Override
@@ -92,6 +105,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id) {
             case R.id.nav_home_page:
                 mPager.setCurrentItem(0);
+                break;
+            case R.id.nav_map_page:
+                mPager.setCurrentItem(1);
+                break;
+            case R.id.nav_car_info:
+                mPager.setCurrentItem(2);
+                break;
+            case R.id.nav_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_log_out:
+                restartAuth();
+                break;
+            default:
                 break;
         }
 
@@ -121,6 +149,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case 1:
                     fragment = new CarLocationFragment();
                     break;
+                case 2:
+                    fragment= new InfoFragment();
+                    break;
                 default:
             }
             return fragment;
@@ -129,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 
@@ -137,6 +168,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if ((requestCode == REQUEST_SIGNUP) && (resultCode == RESULT_OK)) {
             AuthState = 1;
+            mPager.setCurrentItem(0);
         }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

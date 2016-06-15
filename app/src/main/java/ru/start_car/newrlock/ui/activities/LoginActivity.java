@@ -29,11 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     private final String login_TEXT = "ru.start_car.login";
     private final String password_TEXT = "ru.start_car.password";
 
-    private static final String ip = "10.197.154.91";
+    private static final String ip = "192.168.43.23";
     private static final int port = 40004;
     private static final Handler handler = new Handler();
-
-
 
     EditText loginText;
     EditText passwordText;
@@ -83,13 +81,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Activity onCreate");
         setContentView(R.layout.activity_login);
         loginText = (EditText) findViewById(R.id.et_login);
         passwordText = (EditText) findViewById(R.id.et_password);
         button = (Button) findViewById(R.id.btn_login);
         mRoot = (CoordinatorLayout) findViewById(R.id.coord);
         dialog = new ProgressDialog(LoginActivity.this);
-        Log.d(TAG, "Activity start");
+
 
         preferences = getPreferences(MODE_PRIVATE);
         loginText.setText(preferences.getString(login_TEXT, ""));
@@ -129,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-
 
         ConnectionSingletone.getInstance().setAuthenticationCompletedEventHandler(new AuthenticationCompletedEvent());
         ConnectionSingletone.getInstance().setDisconnectedEventHandler(new DisconnectedEvent());
