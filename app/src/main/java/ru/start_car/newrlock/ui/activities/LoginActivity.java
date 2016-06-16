@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         Boolean authOK = (Boolean) arg;
-                       if  (authOK)  onLoginSuccess(); else onLoginFailed();
+                        // чтобы зайти без сервера
+                        if  (authOK)  onLoginSuccess(); else onLoginFailed();
                     }catch (Exception e){
 
                     }
@@ -129,9 +130,17 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ConnectionSingletone.getInstance().setAuthenticationCompletedEventHandler(new AuthenticationCompletedEvent());
-        ConnectionSingletone.getInstance().setDisconnectedEventHandler(new DisconnectedEvent());
-        ConnectionSingletone.getInstance().start(address, port, login, password, false);
+        //Заплатка чтобы без сервера логинился
+        //ConnectionSingletone.getInstance().setAuthenticationCompletedEventHandler(new AuthenticationCompletedEvent());
+        //ConnectionSingletone.getInstance().setDisconnectedEventHandler(new DisconnectedEvent());
+        //ConnectionSingletone.getInstance().start(address, port, login, password, false);
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        onLoginSuccess();
+                    }
+                }, 3000);
     }
 
     @Override
