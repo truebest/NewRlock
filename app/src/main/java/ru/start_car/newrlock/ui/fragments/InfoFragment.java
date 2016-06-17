@@ -18,7 +18,6 @@ import ru.start_car.newrlock.ui.adapters.ExpListAdapter;
  */
 public class InfoFragment extends Fragment {
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
